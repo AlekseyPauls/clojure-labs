@@ -137,9 +137,10 @@
 
 (defn perform-effective-command
   ;; Find and execute command
+  ;; Super class is a first defined parent
   [vtable eff-type obj & args]
   (let [[d-type eff-fn] (dispatch vtable eff-type)
-        d-super-type (super-class d-type)]
+        d-super-type (first (super-class d-type))]
     (binding [super (partial
                       perform-effective-command
                       vtable d-super-type obj)]
@@ -148,9 +149,10 @@
 
 (defn perform-effective-query
   ;; Find and execute command
+  ;; Super class is a first defined parent
   [vtable eff-type obj & args]
   (let [[d-type eff-fn] (dispatch vtable eff-type)
-        d-super-type (super-class d-type)]
+        d-super-type (first (super-class d-type))]
     (binding [super (partial
                       perform-effective-command
                       vtable d-super-type obj)]
