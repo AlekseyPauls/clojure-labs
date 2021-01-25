@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'lein test'
+        sh './lein tests'
       }
     }
 
