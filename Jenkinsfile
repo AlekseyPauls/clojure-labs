@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh './lein tests'
+        sh '''alias lein=\'lein.bat\'
+lein tests'''
       }
     }
 
